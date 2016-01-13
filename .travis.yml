@@ -19,9 +19,9 @@ python:
 # dependencies
 install:
     #- "pip install -U setuptools"
-    - "pip3 install -U pip"
+    - "pip install -U pip"
     #- "pip install -U wheel"
-    - "pip3 install -r requirements/testing.txt"
+    - "pip3 install -r requirements/base.txt" #testing.txt"
 
 # If you need to set the screen size and pixel depth, 
 # you need to start xvfb with the start-stop-daemon 
