@@ -1,0 +1,56 @@
+langauge: python
+
+python:
+    # - "3.3"
+    - "3.4"
+    # - "3.5"
+
+# default user for accessing the local PostgreSQL server 
+# is postgres and doesn’t have a password set up.
+services:
+    - postgresql
+
+# because travis docs says the default is postgresql 9.1
+# so select version build expects to be running
+addons:
+    - postgresql: "9.4"
+
+# Later learn to use env
+# dependencies
+install:
+    - "pip3 install -r requirements/testing.txt"
+
+# If you need to set the screen size and pixel depth, 
+# you need to start xvfb with the start-stop-daemon 
+# utility and not with the init script in the previous example.
+before_script:
+    - "export DISPLAY=:99.0"
+    - "sh -e /etc/init.d/xvfb start"
+    - sleep 3 # give xvfb some time to start
+    - psql -c 'create database travis_ci_test;' -U postgres
+    - python manage.py makemigrations
+    - python manage.py migrate
+    
+# command to run tests
+script:
+    - "python3 manage.py test"
+    # - phantomjs testrunner.js
+ 
+## after installing coverage
+#script:
+#    - "coverage run source='.' manage.py test"
+#    - "coverage report --omit="*settings*, *test* --fail-under=85" # *85 cove
+
+# Look at these later. Eventually get it to upload to the
+# droplet & do some sphinx/RTDs
+
+# before_deploy
+# deploy
+# after_deploy
+# after_script
+
+# eventuall add this part
+# branches:
+#   only:
+#       - master
+#       - deploy
