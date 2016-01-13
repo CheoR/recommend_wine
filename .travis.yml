@@ -18,7 +18,7 @@ addons:
 # Later learn to use env
 # dependencies
 install:
-    - "pip3 install -r requirements/testing.txt"
+    - "pip install -r requirements/testing.txt"
 
 # If you need to set the screen size and pixel depth, 
 # you need to start xvfb with the start-stop-daemon 
