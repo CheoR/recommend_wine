@@ -1,5 +1,5 @@
 langauge: python
-
+sudo: required
 python:
     # - "3.3"
     - "3.4"
