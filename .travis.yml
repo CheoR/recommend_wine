@@ -18,9 +18,9 @@ addons:
 # Later learn to use env
 # dependencies
 install:
-    - "pip install -U setuptools"
+    #- "pip install -U setuptools"
     - "pip install -U pip"
-    - "pip install -U wheel"
+    #- "pip install -U wheel"
     - "pip install -r requirements/testing.txt"
 
 # If you need to set the screen size and pixel depth, 
