@@ -1,0 +1,98 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite*
+pip-log.txt
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python generated files #
+##########################
+*.pyc
+*.pyo
+*.py[cod]
+
+# Unit test and coverage reports #
+##################################
+.coverage
+.tox
+nosetests.xml
+htmlcov
+
+# Translations #
+################
+*.mo
+
+# Others    #
+#############
+*~
+*.bak
+*.swp
+__pycache__/
+functional_tests/screendumps
+
+####################
+# For this project #
+####################
+
+# You shouldn't commit
+# your local env directory
+*.sublime-workspace
+notes_recommend_wine.rst
+
+# Complexity #
+##############
+output/*.html
+output/*/index.html
+
+# Sphinx #
+##########
+docs/_build
+
+# Ipython Notebook #
+###################
+*.ipynb
