@@ -22,7 +22,11 @@ install:
     - "pip install -U pip"
     - 'pip --version'
     # - "pip install -U wheel"
-    # - "pip install -r requirements/base.txt" #testing.txt"
+    # - "pip install -r requirements/testing.txt"
+
+cache:
+    directories:
+        - $HOME/.cache/pip
 
 # If you need to set the screen size and pixel depth, 
 # you need to start xvfb with the start-stop-daemon 
