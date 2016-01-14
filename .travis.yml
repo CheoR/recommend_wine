@@ -20,6 +20,7 @@ python:
 install:
     #- "pip install -U setuptools"
     - "pip install -U pip"
+    - 'pip --version'
     # - "pip install -U wheel"
     # - "pip install -r requirements/base.txt" #testing.txt"
 
