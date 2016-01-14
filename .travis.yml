@@ -20,8 +20,8 @@ python:
 install:
     #- "pip install -U setuptools"
     - "pip install -U pip"
-    #- "pip install -U wheel"
-    - "pip install -r requirements/base.txt" #testing.txt"
+    # - "pip install -U wheel"
+    # - "pip install -r requirements/base.txt" #testing.txt"
 
 # If you need to set the screen size and pixel depth, 
 # you need to start xvfb with the start-stop-daemon 
