@@ -31,6 +31,7 @@ class NewVisitorTest(unittest.TestCase):
         # chosen wine has updated.
 
         # Satisfied she opens up another bottle to review.
+        self.fail('Finish the test!')
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
