@@ -1,3 +1,4 @@
+from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 import unittest
 
@@ -11,24 +12,40 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_can_post_a_review_and_see_it_later(self):    
+    def test_can_post_a_review_and_see_it_later(self):
 
         # Sara likes wine. So she heads overs to the wine's home page.
         self.browser.get('http://localhost:8000')
 
         # And notcies the wine's title in the corder along with some other
         # details about wines choses by users along with their ratings.
+        self.assertIn('RecommendWine', self.browser.title)
+        header_text = self.browser.find_element_by_tag_name('h1').text
+        self.assertIn('RecommendWine', header_text)
 
-        assert 'RecommendWine' in self.browser.title, "Browser title was " + self.browser.title
+        # She notices the comment section.
+        inputbox = self.browser.find_element_by_id('id_comment_box')
+        self.assertEqual(
+            inputbox.get_attribute('comment_box'),
+            'Enter your comment here'
+        )
 
-        # She notices that there's also an option to add her own wine rating and review
+        # And adds that she likes red wines
+        inputbox.send_keys('I like red wines.')
+
+        # After hitting enter, the page updates and shoes her comment
+        table = self.browser.find_element_by_id('id_comments_table')
+        comments_table = tab.find_element_by_tag_name('tr')
+        self.assertTrue(
+            any(row.text == '1: I like red wines' for row in rows)
+        )
 
         # She selects a rating using the raiting selector
 
         # And adds a little bit to the comment box.
 
-        # Clicking on the Add button she notices that the reviws and ratings for her
-        # chosen wine has updated.
+        # Clicking on the Add button she notices that the reviws
+        # and ratings for her chosen wine has updated.
 
         # Satisfied she opens up another bottle to review.
         self.fail('Finish the test!')
