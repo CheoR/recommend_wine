@@ -8,9 +8,10 @@
         <h1>
             Your RecommendWine list
         </h1>
-
-        <inupt id="id_comment_box" placeholder="Enter your comment here" />
-
+        <form method="POST">
+            <input name="comment_text" id="id_new_comment" placeholder="Enter your comment here" />
+            {% csrf_token %}
+        </form>
         <table id="id_comments_table">
         </table>
 

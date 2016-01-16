@@ -24,7 +24,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('RecommendWine', header_text)
 
         # She notices the comment section.
-        inputbox = self.browser.find_element_by_id('id_comment_box')
+        inputbox = self.browser.find_element_by_id('id_new_comment')
         self.assertEqual(
             inputbox.get_attribute('placeholder'),
             'Enter your comment here'
@@ -37,7 +37,7 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('id_comments_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: I like red wines' for row in rows),
+            any(row.text == '1: I like red wines.' for row in rows),
             "New comments did not appear in table"
         )
 
