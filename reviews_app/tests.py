@@ -37,6 +37,11 @@ class HomePageTest(TestCase):
         )
         self.assertEqual(response.content.decode(), expected_html)
 
+    def test_home_page_only_saves_items_when_necessary(self):
+        request = HttpRequest()
+        home_page(request)
+        self.assertEqual(Review.objects.count(), 0)
+
 class reviewModelTest(TestCase):
 
     def test_saving_and_retrieving_Reviews(self):
