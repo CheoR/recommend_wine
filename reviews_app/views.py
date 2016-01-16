@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 def home_page(request):
     return render(request, 'home.html', {
-        'new_comment_text': request.POST.get('comment_text',''),
+        'new_review_text': request.POST.get('review_text',''),
     })

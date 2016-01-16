@@ -9,13 +9,13 @@
             Your RecommendWine list
         </h1>
         <form method="POST">
-            <input name="comment_text" id="id_new_comment" placeholder="Enter your comment here" />
+            <input name="review_text" id="id_new_review" placeholder="Enter your review here" />
             {% csrf_token %}
         </form>
-        <table id="id_comments_table">
+        <table id="id_reviews_table">
             <tr>
                 <td>
-                    1: {{ new_comment_text }}
+                    1: {{ new_review_text }}
                 </td>
             </tr>
         </table>

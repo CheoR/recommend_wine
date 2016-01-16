@@ -4,6 +4,7 @@ from django.http import HttpRequest
 from django.test import TestCase
 
 from reviews_app.views import home_page
+#from reviews_app.models import Comment
 
 class HomePageTest(TestCase):
 
@@ -21,15 +22,18 @@ class HomePageTest(TestCase):
     def test_home_page_can_save_a_POST_request(self):
         request = HttpRequest()
         request.method = 'POST'
-        request.POST['comment_text'] = 'A new comment'
+        request.POST['review_text'] = 'A new review'
 
         response = home_page(request)
 
-        self.assertIn('A new comment', response.content.decode())
+        self.assertIn('A new review', response.content.decode())
 
-        self.assertIn('A new comment', response.content.decode())
+        self.assertIn('A new review', response.content.decode())
         expected_html = render_to_string(
             'home.html',
-            {'new_comment_text':  'A new comment'}
+            {'new_review_text':  'A new review'}
         )
         self.assertEqual(response.content.decode(), expected_html)
+
+class ReviewModelTest(TestCase):
+    pass

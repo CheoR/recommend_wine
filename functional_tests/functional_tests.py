@@ -13,7 +13,7 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.quit()
 
     def check_for_row_in_comments_table(self, row_text):
-        table = self.browser.find_element_by_id('id_comments_table')
+        table = self.browser.find_element_by_id('id_reviews_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertIn(row_text, [row.text for row in rows])
 
@@ -29,10 +29,10 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('RecommendWine', header_text)
 
         # She notices the comment section.
-        inputbox = self.browser.find_element_by_id('id_new_comment')
+        inputbox = self.browser.find_element_by_id('id_new_review')
         self.assertEqual(
             inputbox.get_attribute('placeholder'),
-            'Enter your comment here'
+            'Enter your review here'
         )
 
         # And adds that she likes red wines
@@ -47,7 +47,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # There is still a text box inviting her to add another comment. She
         # enters "White wines are fun too!"
-        inputbox = self.browser.find_element_by_id('id_new_comment')
+        inputbox = self.browser.find_element_by_id('id_new_review')
         inputbox.send_keys('White wines are fun too!')
         inputbox.send_keys(Keys.ENTER)
 
