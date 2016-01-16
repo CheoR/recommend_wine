@@ -26,7 +26,9 @@ class HomePageTest(TestCase):
 
         response = home_page(request)
 
-        self.assertIn('A new review', response.content.decode())
+        self.assertEqual(Review.objects.count(), 1)
+        new_review = Review.objects.first()
+        self.assertEqual(new_review.comment, 'A new review')
 
         self.assertIn('A new review', response.content.decode())
         expected_html = render_to_string(
