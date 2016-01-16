@@ -33,12 +33,21 @@ class NewVisitorTest(unittest.TestCase):
         # And adds that she likes red wines
         inputbox.send_keys('I like red wines.')
 
+        # When she hits enter, the page updates, and now the page lists
+        # "1: I like red wines." as a comment in the comment table
+        inputbox.send_keys(Keys.ENTER)
+
         # After hitting enter, the page updates and shoes her comment
         table = self.browser.find_element_by_id('id_comments_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '1: I like red wines.' for row in rows),
-            "New comments did not appear in table"
+        self.assertIn(
+            '1: I like red wines.',
+            [row.text for row in rows]
+        )
+
+        self.assertIn(
+            '2: White wines are fun too!',
+            [row.text for row in rows]
         )
 
         # She selects a rating using the raiting selector

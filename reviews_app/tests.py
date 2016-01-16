@@ -26,3 +26,10 @@ class HomePageTest(TestCase):
         response = home_page(request)
 
         self.assertIn('A new comment', response.content.decode())
+
+        self.assertIn('A new comment', response.content.decode())
+        expected_html = render_to_string(
+            'home.html',
+            {'new_comment_text':  'A new comment'}
+        )
+        self.assertEqual(response.content.decode(), expected_html)

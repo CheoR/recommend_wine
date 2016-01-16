@@ -1,7 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 def home_page(request):
-    if request.method == 'POST':
-        return HttpResponse(request.POST['comment_text'])
-    return render(request, 'home.html')
+    return render(request, 'home.html', {
+        'new_comment_text': request.POST.get('comment_text',''),
+    })
