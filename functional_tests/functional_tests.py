@@ -12,6 +12,11 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
+    def check_for_row_in_comments_table(self, row_text):
+        table = self.browser.find_element_by_id('id_comments_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
+
     def test_can_post_a_review_and_see_it_later(self):
 
         # Sara likes wine. So she heads overs to the wine's home page.
@@ -38,17 +43,17 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
 
         # After hitting enter, the page updates and shoes her comment
-        table = self.browser.find_element_by_id('id_comments_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn(
-            '1: I like red wines.',
-            [row.text for row in rows]
-        )
+        self.check_for_row_in_comments_table('1: I like red wines.')
 
-        self.assertIn(
-            '2: White wines are fun too!',
-            [row.text for row in rows]
-        )
+        # There is still a text box inviting her to add another comment. She
+        # enters "White wines are fun too!"
+        inputbox = self.browser.find_element_by_id('id_new_comment')
+        inputbox.send_keys('White wines are fun too!')
+        inputbox.send_keys(Keys.ENTER)
+
+        # The page updates again, and now shows both items on her list
+        self.check_for_row_in_comments_table('1: I like red wines.')
+        self.check_for_row_in_comments_table('2: White wins are fun too!')
 
         # She selects a rating using the raiting selector
 
