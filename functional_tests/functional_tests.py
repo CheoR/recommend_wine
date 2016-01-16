@@ -26,7 +26,7 @@ class NewVisitorTest(unittest.TestCase):
         # She notices the comment section.
         inputbox = self.browser.find_element_by_id('id_comment_box')
         self.assertEqual(
-            inputbox.get_attribute('comment_box'),
+            inputbox.get_attribute('placeholder'),
             'Enter your comment here'
         )
 
@@ -35,9 +35,10 @@ class NewVisitorTest(unittest.TestCase):
 
         # After hitting enter, the page updates and shoes her comment
         table = self.browser.find_element_by_id('id_comments_table')
-        comments_table = tab.find_element_by_tag_name('tr')
+        rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: I like red wines' for row in rows)
+            any(row.text == '1: I like red wines' for row in rows),
+            "New comments did not appear in table"
         )
 
         # She selects a rating using the raiting selector
