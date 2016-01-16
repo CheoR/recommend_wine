@@ -1,3 +1,4 @@
 from django.db import models
 
-# Create your models here.
+class Review(models.Model):
+   comment = models.CharField(default='', max_length=200)
