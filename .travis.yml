@@ -37,13 +37,12 @@ cache:
 #    - psql -c 'create database travis_ci_test;' -U postgres
 #    - python manage.py makemigrations
 #    - python manage.py migrate
-    
+
 # command to run tests
 script:
-    - "python3 delete_this.py"
-#    - "python3 manage.py test"
+    - "python3 manage.py test"
     # - phantomjs testrunner.js
- 
+
 ## after installing coverage
 #script:
 #    - "coverage run source='.' manage.py test"
