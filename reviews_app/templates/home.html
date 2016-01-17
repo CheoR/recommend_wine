@@ -13,11 +13,13 @@
             {% csrf_token %}
         </form>
         <table id="id_reviews_table">
-            <tr>
-                <td>
-                    1: {{ new_review_text }}
-                </td>
-            </tr>
+            {% for review in reviews %}
+                <tr>
+                    <td>
+                        {{ forloop.counter }}: {{ review.comment }}
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
 
     </body>

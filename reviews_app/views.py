@@ -6,5 +6,5 @@ def home_page(request):
     if request.method == 'POST':
         Review.objects.create(comment=request.POST['review_text'])
         return redirect('/')
-
-    return render(request, 'home.html')
+    reviews = Review.objects.all()
+    return render(request, 'home.html', {'reviews': reviews})

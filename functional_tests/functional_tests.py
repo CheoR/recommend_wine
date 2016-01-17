@@ -53,7 +53,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # The page updates again, and now shows both items on her list
         self.check_for_row_in_comments_table('1: I like red wines.')
-        self.check_for_row_in_comments_table('2: White wins are fun too!')
+        self.check_for_row_in_comments_table('2: White wines are fun too!')
 
         # She selects a rating using the raiting selector
 

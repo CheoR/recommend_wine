@@ -45,7 +45,17 @@ class HomePageTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
 
-class reviewModelTest(TestCase):
+    def test_home_page_displays_all_list_items(self):
+        Review.objects.create(comment='review 1')
+        Review.objects.create(comment='review 2')
+
+        request = HttpRequest()
+        response = home_page(request)
+
+        self.assertIn('review 1', response.content.decode())
+        self.assertIn('review 2', response.content.decode())
+
+class ReviewModelTest(TestCase):
 
     def test_saving_and_retrieving_Reviews(self):
         first_review = Review()
