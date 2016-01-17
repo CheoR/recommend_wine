@@ -30,17 +30,20 @@ class HomePageTest(TestCase):
         new_review = Review.objects.first()
         self.assertEqual(new_review.comment, 'A new review')
 
-        self.assertIn('A new review', response.content.decode())
-        expected_html = render_to_string(
-            'home.html',
-            {'new_review_text':  'A new review'}
-        )
-        self.assertEqual(response.content.decode(), expected_html)
-
     def test_home_page_only_saves_items_when_necessary(self):
         request = HttpRequest()
         home_page(request)
         self.assertEqual(Review.objects.count(), 0)
+
+    def test_home_page_redirects_after_POST(self):
+        request = HttpRequest()
+        request.method = 'POST'
+        request.POST['review_text'] = 'A new review'
+
+        response = home_page(request)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], '/')
 
 class reviewModelTest(TestCase):
 
